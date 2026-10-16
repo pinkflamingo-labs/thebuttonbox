@@ -1,0 +1,173 @@
+/* =====================================================================================
+   Import and Snap a label: bringing patterns and stash into the studio.
+   Built only from the shared tokens and depth recipe in app/globals.css (--bx-top, --bx-edge, --bx-depth,
+   --bx-glow, --f1, --f2, --fi, --fglow). Calm mode and reduced motion keep everything still.
+   ===================================================================================== */
+
+/* ------------------------------------------------------------------ the promise */
+.imp-promise { display: flex; align-items: center; gap: 18px; }
+.imp-promise .jewel { --js: 60px; }
+.imp-promise p { font-weight: 600; font-size: 1.04rem; max-width: 70ch; }
+.imp-promise .small { font-weight: 500; margin-top: 4px; }
+
+/* ------------------------------------------------------------------ source cards */
+.imp-sources { --min: 260px; align-items: stretch; }
+.imp-sources > .rise, .imp-sources .backlit { height: 100%; }
+.imp-card { display: flex; flex-direction: column; gap: 12px; height: 100%; padding: 22px 22px 20px; }
+.imp-card .imp-title { display: flex; align-items: center; gap: 14px; }
+.imp-card .jewel { --js: 62px; }
+.imp-card h3 { font-size: 1.22rem; }
+.imp-blurb { color: var(--ink-soft); font-size: .95rem; }
+.imp-actions { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.imp-card.is-off { background: linear-gradient(150deg, rgba(255, 255, 255, .74), rgba(255, 255, 255, .5)); }
+.imp-card.is-off .jewel { filter: saturate(.5); opacity: .78; box-shadow: var(--bx-top), 0 0 0 1.5px var(--f2); }
+.imp-off { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-size: .86rem; font-weight: 600; color: var(--ink-soft); }
+.imp-off svg { width: 18px; height: 18px; flex: none; }
+.imp-sub { font-size: .8rem; color: var(--ink-soft); font-weight: 500; }
+
+/* folder drop zone */
+.imp-drop {
+  display: grid; place-items: center; gap: 4px; text-align: center; padding: 18px 14px; border-radius: var(--r-md);
+  border: 2px dashed rgba(var(--fglow), .95); color: var(--fi); font-weight: 600; font-size: .92rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .82), var(--f1));
+  box-shadow: var(--bx-top), inset 0 0 20px rgba(var(--fglow), .25);
+  transition: box-shadow .3s ease, transform .3s var(--ease), border-color .3s ease;
+}
+.imp-drop svg { width: 30px; height: 30px; color: var(--ink); }
+.imp-drop.is-over { border-color: var(--fi); box-shadow: var(--bx-glow); transform: translateY(-2px); }
+
+/* ------------------------------------------------------------------ reading */
+.imp-reading { display: grid; gap: 14px; }
+.imp-progress { font-weight: 600; color: var(--ink); min-height: 1.6em; }
+.imp-meter { height: 12px; border-radius: 999px; overflow: hidden; background: var(--f1); box-shadow: inset 0 1px 3px rgba(74, 58, 95, .18), var(--bx-edge); }
+.imp-meter > span {
+  display: block; height: 100%; width: var(--p, 0%); border-radius: inherit;
+  background: linear-gradient(90deg, var(--f2), var(--pink-2)); box-shadow: 0 0 14px rgba(var(--fglow), .9);
+  transition: width .5s var(--ease);
+}
+.imp-zips { display: grid; gap: 6px; }
+.imp-zips ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ------------------------------------------------------------------ review */
+.imp-review { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 620px), 1fr)); align-items: start; }
+.imp-rcard { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 22px; padding: 22px; }
+.imp-rcard.is-off { opacity: .76; }
+.imp-rcard.is-off .imp-cover { filter: grayscale(.45); }
+.imp-cover {
+  aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; border: 6px solid #fff; display: grid; place-items: center;
+  align-self: start; background: linear-gradient(160deg, var(--f1), #fff);
+  box-shadow: 0 0 0 1px rgba(74, 58, 95, .12), 0 14px 26px -16px rgba(74, 58, 95, .55), 0 0 28px rgba(var(--fglow), .45);
+}
+.imp-cover img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
+.imp-cover > svg { width: 42%; height: 42%; color: var(--fi); opacity: .55; }
+.imp-rbody { display: grid; gap: 14px; min-width: 0; }
+.imp-rtop { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.imp-rtop h3 { overflow-wrap: anywhere; }
+.imp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.imp-files { list-style: none; display: grid; gap: 8px; }
+.imp-file {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(150px, 200px); gap: 10px; align-items: center;
+  padding: 8px 10px 8px 14px; border-radius: 14px; background: rgba(255, 255, 255, .78); box-shadow: var(--bx-top), var(--bx-edge);
+}
+.imp-file .nm { font-weight: 600; font-size: .9rem; overflow-wrap: anywhere; }
+.imp-file select { padding-block: 7px; font-size: .88rem; }
+.imp-notes { display: grid; gap: 4px; padding-left: 1.1em; font-size: .86rem; color: var(--ink-soft); }
+.imp-more { border-radius: var(--r-sm); background: rgba(255, 255, 255, .55); box-shadow: var(--bx-edge); padding: 10px 14px; }
+.imp-more > summary { cursor: pointer; font-weight: 700; font-size: .92rem; color: var(--fi); padding: 2px 0; }
+.imp-more[open] > summary { margin-bottom: 12px; }
+.imp-needs { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; min-width: 0; }
+.imp-needs > legend { padding: 0; margin-bottom: 8px; }
+.imp-req {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 10px; padding: 12px;
+  border-radius: var(--r-sm); background: rgba(255, 255, 255, .74); box-shadow: var(--bx-top), var(--bx-edge);
+}
+.imp-req .wide { grid-column: span 2; }
+.imp-req .end { grid-column: 1 / -1; display: flex; justify-content: flex-end; }
+.imp-supplies { list-style: none; display: grid; gap: 8px; }
+.imp-supplies li { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.imp-supplies li > input { flex: 1 1 200px; width: auto; }
+.imp-savebar { position: sticky; bottom: 12px; z-index: 20; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; }
+.imp-report { list-style: none; display: grid; gap: 8px; }
+.imp-report .row-item { background: rgba(255, 255, 255, .78); box-shadow: var(--bx-top), var(--bx-edge); }
+.imp-state { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; flex: none; }
+.imp-state svg { width: 16px; height: 16px; }
+.imp-state.ok { background: var(--grn-1); color: var(--grn-ink); box-shadow: 0 0 0 1px var(--grn-2), 0 0 12px rgba(181, 220, 197, .85); }
+.imp-state.skip { background: var(--blu-1); color: var(--blu-ink); box-shadow: 0 0 0 1px var(--blu-2), 0 0 12px rgba(189, 205, 243, .85); }
+.imp-state.bad { background: #FCE4E8; color: var(--danger); box-shadow: 0 0 0 1px #F2B8C2, 0 0 12px rgba(242, 184, 194, .8); }
+.imp-stats { --min: 140px; --gap: 12px; }
+.imp-stats .stat { padding: 14px 16px; }
+.imp-stats .stat .n { font-size: 2rem; }
+
+/* ------------------------------------------------------------------ OneDrive folders */
+.imp-modal .modal-card { width: min(720px, 100%); display: grid; gap: 14px; }
+.imp-crumbs { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: .88rem; }
+.imp-crumbs li { display: inline-flex; align-items: center; gap: 4px; }
+.imp-crumbs li + li::before { content: "/"; color: var(--ink-soft); padding-inline: 2px; }
+.imp-crumbs button {
+  border: 0; cursor: pointer; padding: 5px 11px; border-radius: 999px; font: 600 .86rem/1.2 var(--f-body); color: var(--ink);
+  background: rgba(255, 255, 255, .92); box-shadow: var(--bx-top), 0 0 0 1px rgba(205, 184, 238, .5);
+}
+.imp-crumbs button[aria-current="location"] { background: var(--f1); box-shadow: 0 0 0 1.5px var(--f2), 0 0 12px rgba(var(--fglow), .7); }
+.imp-list { list-style: none; display: grid; gap: 6px; max-height: min(50vh, 480px); overflow: auto; padding: 4px; }
+.imp-item {
+  display: flex; align-items: center; gap: 12px; width: 100%; padding: 10px 14px; border: 0; border-radius: 14px;
+  text-align: left; color: var(--ink); font: 600 .95rem/1.3 var(--f-body);
+  background: rgba(255, 255, 255, .9); box-shadow: var(--bx-top), var(--bx-edge);
+}
+button.imp-item { cursor: pointer; transition: box-shadow .25s ease; }
+button.imp-item:hover, button.imp-item:focus-visible { box-shadow: var(--bx-glow); }
+.imp-item svg { width: 22px; height: 22px; flex: none; }
+.imp-item .go { transform: rotate(-90deg); color: var(--ink-soft); }
+.imp-item .grow { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.imp-item.is-file { font-weight: 500; color: var(--ink-soft); background: rgba(255, 255, 255, .62); }
+
+/* ------------------------------------------------------------------ snap a label */
+.imp-types { border: 0; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; min-width: 0; }
+.imp-types > legend { padding: 0; margin-bottom: 12px; font-family: var(--f-head); font-weight: 600; color: var(--ink); }
+.imp-type {
+  position: relative; display: grid; gap: 4px; padding: 16px 18px 16px 50px; border-radius: var(--r-md); cursor: pointer;
+  background: linear-gradient(180deg, #fff, rgba(255, 255, 255, .78)); box-shadow: var(--bx-depth);
+  transition: box-shadow .3s ease, transform .3s var(--ease), background .3s ease;
+}
+.imp-type input { position: absolute; left: 18px; top: 19px; width: 20px; height: 20px; margin: 0; accent-color: var(--fi); }
+.imp-type .nm { font-weight: 700; }
+.imp-type .hint { font-size: .84rem; color: var(--ink-soft); }
+.imp-type:has(input:checked) { background: linear-gradient(180deg, #fff, var(--f1)); box-shadow: var(--bx-glow); }
+.imp-type:has(input:focus-visible) { outline: 3px solid var(--pur-ink); outline-offset: 3px; }
+@media (hover: hover) { .imp-type:hover { transform: translateY(-2px); } }
+.imp-snap { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 28px; align-items: start; }
+.imp-shot {
+  width: min(340px, 100%); aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; border: 6px solid #fff;
+  display: grid; place-items: center; background: linear-gradient(160deg, var(--f1), #fff);
+  box-shadow: 0 0 0 1px rgba(74, 58, 95, .12), 0 18px 34px -18px rgba(74, 58, 95, .55), 0 0 34px rgba(var(--fglow), .5);
+}
+.imp-shot img { width: 100%; height: 100%; object-fit: cover; }
+.imp-shot > svg { width: 38%; height: 38%; color: var(--fi); opacity: .5; }
+
+/* ------------------------------------------------------------------ smaller screens */
+@media (max-width: 860px) {
+  .imp-snap { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 700px) {
+  .imp-promise { align-items: flex-start; }
+  .imp-promise .jewel { --js: 48px; }
+  .imp-card { padding: 18px; }
+  .imp-rcard { grid-template-columns: minmax(0, 1fr); padding: 18px; gap: 16px; }
+  .imp-cover { width: min(170px, 60%); }
+  .imp-file { grid-template-columns: minmax(0, 1fr); }
+  .imp-savebar { bottom: 8px; padding: 10px 12px; }
+  .imp-type { padding: 14px 14px 14px 46px; }
+  .imp-type input { left: 14px; top: 17px; }
+}
+@media (max-width: 420px) {
+  .imp-req .wide { grid-column: 1 / -1; }
+  .imp-req { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }
+}
+
+/* ------------------------------------------------------------------ calm mode and reduced motion */
+html.calm .imp-drop.is-over, html.calm .imp-type:hover { transform: none; }
+html.calm .imp-meter > span { transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .imp-drop.is-over, .imp-type:hover { transform: none; }
+  .imp-meter > span { transition: none; }
+}
