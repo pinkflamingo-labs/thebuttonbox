@@ -1,0 +1,29 @@
+{
+  "name": "the-button-box",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Button Box: a makers' studio for every craft. Next.js on Vercel, Supabase for data and sign-in, Stripe for subscriptions.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "postinstall": "node scripts/copy-pdfjs.mjs",
+    "check": "node qa/check.mjs"
+  },
+  "dependencies": {
+    "@azure/msal-browser": "^5.0.0",
+    "@supabase/ssr": ">=0.6.1 <1",
+    "@supabase/supabase-js": "^2.49.4",
+    "next": "^16.0.0",
+    "pdfjs-dist": "4.10.38",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "stripe": ">=17.7.0 <21"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "devDependencies": {
+    "esbuild": ">=0.24.0 <1"
+  }
+}
